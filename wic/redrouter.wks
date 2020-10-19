@@ -1,0 +1,15 @@
+# short-description: Create an EFI disk image
+# long-description: Creates a partitioned EFI disk image that the user
+# can directly dd to boot media.
+
+#part /boot --source bootimg-efi --sourceparams="loader=grub-efi" --ondisk sda --label msdos --active --align 1024
+#part /boot --source bootimg-biosplusefi --sourceparams="loader=grub-efi" --ondisk sda --label BOUTER-BOOT --active --align 1024 --use-uuid
+part /boot --source bootimg-biosplusefi --sourceparams="loader=grub-efi" --label REDROUTER-BOOT --active --align 1024 --use-uuid
+
+part / --source rootfs --ondisk sda --fstype=btrfs --label redrouter-root --align 1024 --use-uuid --fsoptions="compress=zstd"
+#part / --source copy --sourceparams="file=bouter-image-rectanglex86-64.squashfs-lz4" --fstype=btrfs --label bouter-root --align 1024 --use-uuid --fsoptions="compress=zstd"
+#part / --source copy --sourceparams="file=bouter-image-rectanglex86-64.squashfs-lz4" --fstype=ext4 --label bouter-root --align 1024 --use-uuid
+
+#part /mnt/config --fstype=btrfs --label bouter-config --align 1024 --use-uuid --fixed-size=128 --fsoptions="compress=zstd"
+
+bootloader --ptable gpt --timeout=5 --append="rootwait rootfstype=btrfs console=ttyS0,115200 console=tty0"
