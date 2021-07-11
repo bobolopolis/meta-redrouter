@@ -9,10 +9,10 @@ SRC_URI = " \
     git://git.yoctoproject.org/yocto-kernel-cache;type=kmeta;name=meta;branch=yocto-5.4;destsuffix=kernel-meta \
     file://defconfig \
 "
-SRCREV_machine = "52f6ded2a377ac4f191c84182488e454b1386239"
-SRCREV_meta = "bb39fa8ebe05b1a0663cb7e04b83c5708a43e168"
+SRCREV_machine = "4e85f8a712cddf2ceeaac50a26b239fbbcb7091f"
+SRCREV_meta = "19738ca97b999a3b150e2d34232bb44b6537348f"
 
-LINUX_VERSION = "5.4.72"
+LINUX_VERSION = "5.4.109"
 PV = "${LINUX_VERSION}"
 LINUX_VERSION_EXTENSION = "-redrouter"
 
